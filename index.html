@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body style="
 height: 100vh;
 background-color: #FAACA8;
@@ -14,114 +16,81 @@ background-image: -moz-linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
 background-image: -o-linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
 background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);">
   <div class="logo-box" style='width: 400px; height: 400px'>
-    <svg id="mysvg" class="" width="100%" height="100%" viewBox="0 0 640 800" preserveAspectRatio="xMaxYmax">
+    <svg id="mysvg" class="" width="100%" height="100%" viewBox="0 0 2000 2000" preserveAspectRatio="xMaxYmax">
 
     </svg>
-  </div>  
+  </div>
 
   <script src="./snap.svg-min.js"></script>
   <script>
     var s = Snap('#mysvg');
-    var path = s.path("M199.6,197.5c0.2-0.2,0.5-0.2,0.7,0c0.2,0.2,0.2,0.5,0,0.7   c-0.2,0.2-0.5,0.2-0.7,0c-0.1-0.1-0.1-0.2-0.1-0.4S199.5,197.6,199.6,197.5z").attr({
+    var path = s.path("M0,0 L1000,0 L2000,0 L2000,2000 L1000,2000 L0, 2000 z").attr({
       fill: "#000"
     });
-    var path1 = s.path("M330.2,145c0,0.3-0.2,0.5-0.5,0.5c-0.3,0-0.5-0.2-0.5-0.5  c0-0.2,0.1-0.4,0.3-0.5c0.1,0,0.1,0,0.2,0C329.9,144.5,330.2,144.7,330.2,145z").attr({
-        fill: "#aaa"
-      });
-    var path2 = s.path("M200.5,200c0,0.3-0.2,0.5-0.5,0.5s-0.5-0.2-0.5-0.5  c0-0.1,0-0.2,0.1-0.3c0.1-0.1,0.2-0.2,0.4-0.2C200.3,199.5,200.5,199.7,200.5,200z").attr({
-        fill: "#aaa"
-      });
+    var path1 = s.path("M0,2000 L0,100 L300,500 L300,2000 z").attr({
+      fill: "#000"
+    });
+    var path2 = s.path("M2000,100 L2000,2000 L1700,2000 L1700,500 z").attr({
+      fill: "#000"
+    });
 
-    setTimeout(first, 0)
 
-    function first(){
+    setTimeout(first, 1000)
+    setTimeout(second, 1800)
+    setTimeout(showK, 4800)
+
+    function first() {
       path.animate({
-        d: "M182.3,182.3c23.6-23.6,50.6-34.8,60.4-25c6.1,6.1,4,19-4.3,33.6  c-4.9,8.7-12,18-20.8,26.7c-23.6,23.6-50.6,34.8-60.4,25c-4.9-4.9-4.5-14.1,0-25S170.5,194.1,182.3,182.3z",
+        d: "M0,0 L1000,1000 L2000,0 L2000,2000 L1000,2000 L0, 2000 z",
         fill: "#000"
-      }, 200, mina.backout, function(){
-        second()
+      }, 1200, mina.elastic, function () {
+        setTimeout(third(), 1200)
+        setTimeout(rightToTop(), 100)
       });
     }
-    function second(){
+
+    function second() {
       path.animate({
-        d: "M143,129.7c11.2-11.2,46.9,6.2,79.7,39c20.6,20.6,35.1,42.2,40.3,58.3  c3.1,9.6,2.9,17.1-1.3,21.3c-11.2,11.2-46.9-6.2-79.7-39c-16.4-16.4-28.9-33.5-36-47.9C138.9,147,137.4,135.3,143,129.7z",
+        d: "M0,0 L1000,1000 L2000,0 L2000,450 L1000,2000 L0, 450 z",
         fill: "#000"
-      }, 500, mina.elastic, function () {
-        setTimeout(third, 20)
-      })
+      }, 1200, mina.bounce, function () {
+        fouth()
+      });
     }
-    function third(){
+
+    function third() {
       path.animate({
-        d: "M144.5,128.2c36.2-36.2,92.1-38.9,124.8-6.2c20.6,20.6,27.1,50.2,20.2,78.4  c-4.1,16.7-12.9,33-26.4,46.5C227,283,171.1,285.8,138.3,253c-16.4-16.4-23.9-38.5-22.8-61.1S126.4,146.3,144.5,128.2z",
+        d: "M0,0 L1000,1000 L2000,0 L2000,450 L1000,1450 L0, 450 z",
         fill: "#000"
-      }, 500, mina.elastic, function () {
-        four()
-      })
-    }
-    function four(){
-      path.animate({
-        d: "M45.7,128.2C81.8,92,266.6,59.2,299.3,92c20.6,20.6-2.9,80.2-9.8,108.4  c-4.1,16.7,49.1,95,35.6,108.5C289,345,171.1,285.8,138.3,253c-16.4-16.4-23.9-38.5-22.8-61.1S27.6,146.3,45.7,128.2z",
-        fill: "#000"
-      }, 500, mina.elastic, function () {
-        five()
-      })
-    }
-    function five(){
-      path.animate({
-        d: "M45.7,128.2C81.8,92,266.6,59.2,299.3,92c20.6,20.6-2.9,80.2-9.8,108.4  c-4.1,16.7,75.6,48.5,62.1,62C315.5,298.5,175,289.7,175,289.7s-134.4-1.4-133.3-24S27.6,146.3,45.7,128.2z",
-        fill: "#000"
-      }, 500, mina.backout, function () {
+      }, 1200, mina.elastic, function () {
         six()
-      })
+      });
     }
-    function six(){
-      path.animate({
-        d: "M44.9,137.8c0,0,220.9-68.9,253.7-36.2c20.6,20.6,59,57,59,57  s11.7,129.7,0.7,140.7s-306.6,10-317.3-0.7S44.9,137.8,44.9,137.8z",
-        fill: "#000"
-      }, 100, mina.linear, function () {
-        seven()
-      })
-    }
-    function seven(){
-      path.animate({
-        d: "M40,120c8.3-8.3,86.9,0,86.9,0h131.6c0,0,91.5-10,101.5,0s9.2,168.3-1.8,179.3  s-306.6,10-317.3-0.7S31.7,128.3,40,120z",
-        fill: "#000"
-      }, 500, mina.elastic, function () {
-        eight()
-      })
-    }
-    function eight(){
-      path.animate({
-        d: "M160,96c29.7,0,41,0,70,0  c19.3,19.3,28.5,24,28.5,24s91.5-10,101.5,0s9.2,168.3-1.8,179.3s-306.6,10-317.3-0.7S31.7,128.3,40,120c8.3-8.3,86.9,0,86.9,0s15.8-6.7,33.1-24z",
-        // d: "M40,120c8.3-8.3,86.9,0,86.9,0s15.8-6.7,33.1-24c29.7,0,41,0,70,0  c19.3,19.3,28.5,24,28.5,24s91.5-10,101.5,0s9.2,168.3-1.8,179.3s-306.6,10-317.3-0.7S31.7,128.3,40,120z",
-        fill: "#000"
-      }, 100, mina.backout)
-      
-      nine();
-    }
-    function nine(){
+
+    function fouth() {
       path1.animate({
-        d: "M342.2,145c0,6.9-5.6,12.5-12.5,12.5s-12.5-5.6-12.5-12.5  c0-5.1,3-9.4,7.3-11.4c1.6-0.7,3.3-1.1,5.2-1.1C336.6,132.5,342.2,138.1,342.2,145z",
-        fill: "#aaa"
-      }, 100, mina.backout)
+        d: "M0,2000 L0,900 L300,1200 L300,2000 z",
+        fill: "#000"
+      }, 1200, mina.elastic, function () {
+        five()
+      });
+    }
+    function rightToTop() {
       path2.animate({
-        d: "M250,214c0,27.6-22.4,50-50,50s-50-22.4-50-50  c0-12.1,4.3-23.2,11.5-31.8c9.2-11.1,23-18.2,38.5-18.2C227.6,164,250,186.4,250,214z",
-        fill: "#aaa"
-      }, 100, mina.backout, function () {
-        ten()
-      })
+        d: "M2000,0 L2000,2000 L1700,2000 L1700,300 z",
+        fill: "#000"
+      }, 10, mina.elastic);
     }
-    function ten(){
-      path1.animate({
-        d: "M342.2,145c0,6.9-5.6,12.5-12.5,12.5s-12.5-5.6-12.5-12.5  c0-5.1,3-9.4,7.3-11.4c1.6-0.7,3.3-1.1,5.2-1.1C336.6,132.5,342.2,138.1,342.2,145z",
-        fill: "#aaa"
-      }, 100, mina.backout, function () {
-        ten()
-      })
+    function six() {
+      path.animate({
+        d: "M0,0 L1000,1000 L1450,550 L1450,1000 L1000,1450 L0, 450 z",
+        fill: "#000"
+      }, 1200, mina.elastic);
     }
-
-
-
+    function showK(){
+      
+    }
   </script>
 </body>
+
 </html>
