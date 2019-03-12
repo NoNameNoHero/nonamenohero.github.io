@@ -41,10 +41,10 @@
       padding: 0;
       z-index: -1;
       background-color: #4158D0;
-      background-image: -webkit-linear-gradient(43deg, #4158D0 19%, #C850C0 46%, #FFCC70 70%);
-      background-image: -moz-linear-gradient(43deg, #4158D0 19%, #C850C0 46%, #FFCC70 70%);
-      background-image: -o-linear-gradient(43deg, #4158D0 19%, #C850C0 46%, #FFCC70 70%);
-      background-image: linear-gradient(43deg, #4158D0 19%, #C850C0 46%, #FFCC70 70%);
+      background-image: -webkit-linear-gradient(43deg, #ff00cc 19%, #333399 70%);
+      background-image: -moz-linear-gradient(43deg, #ff00cc 19%, #333399 70%);
+      background-image: -o-linear-gradient(43deg, #ff00cc 19%, #333399 70%);
+      background-image: linear-gradient(43deg, #ff00cc 19%, #333399 70%);
 
 
       background-position: 0 0;
@@ -58,6 +58,7 @@
 
     .logo-box {
       white-space: nowrap;
+      width: 100%;
     }
 
     .logo-M-box,
@@ -68,6 +69,7 @@
       height: 400px;
       width: 400px;
       transition: all ease 3s;
+      max-width: 50%;
     }
 
     .logo-M-box {
@@ -158,6 +160,12 @@
     <div class="logo-box">
       <div class="logo-M-box">
         <svg id="mysvg-m" width="100%" height="100%" viewBox="0 0 2000 2000">
+          <linearGradient id="gradient">
+            <stop offset="0" stop-color="gold"></stop>
+            <stop offset="30%" stop-color="red"></stop>
+            <stop offset="60%" stop-color="darkviolet"></stop>
+            <stop offset="100%" stop-color="deepskyblue"></stop>
+          </linearGradient>
         </svg>
       </div>
       <div class="logo-K-box">
@@ -196,6 +204,8 @@
       fill: "#fff"
     });
 
+    var group_m = m.group(m0, m1, m2);
+    var group_k = k.group(k0, k1, k2);
 
     setTimeout(first, 200)
     setTimeout(second, 1000)
@@ -267,8 +277,9 @@
 
     function k_in() {
       k0.animate({
-fill: "#f01516"
+        fill: "#ec6769"
       }, 1000, mina.ease);
+
       k0.animate({
         d: "M450,450 L1000,1000 L2000,0 L2000,450 L1000,1450 L0, 450 z"
       }, 200, mina.ease, function () {
@@ -282,17 +293,21 @@ fill: "#f01516"
       }
 
       k1.animate({
-fill: "#f01516"
+        fill: "#ec6769"
       }, 1000, mina.ease);
+
       k2.animate({
-fill: "#f01516"
+        fill: "#ec6769"
       }, 1000, mina.ease);
+
       m2.animate({
-fill: "#f01516"
+        fill: "#ec6769"
       }, 1000, mina.ease);
+
       m2.animate({
         d: "M2000,0 L2000,2000 L1700,1700 L1700,0 z"
       }, 1000, mina.elastic);
+      
     }
 
     function k_out() {
@@ -322,16 +337,16 @@ fill: "#f01516"
         d: "M0,0 L1000,1000 L2000,0 L2000,450 L1000,1450 L0, 450 z",
       }, 1000, mina.bounce);
       m0.animate({
-        fill: "#671ffd"
+        fill: "#89fffd"
       }, 1000, mina.ease);
       m1.animate({
         d: "M0,2000 L0,440 L300,740 L300,2000 z",
       }, 1000, mina.bounce);
       m1.animate({
-        fill: "#671ffd"
+        fill: "#89fffd"
       }, 1000, mina.ease);
       m2.animate({
-        fill: "#671ffd"
+        fill: "#89fffd"
       }, 1000, mina.ease);
     }
 
