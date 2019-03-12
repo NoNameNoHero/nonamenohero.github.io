@@ -5,44 +5,178 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <title>Document</title>
+
+  <style>
+    .container {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    body {
+      overflow: hidden;
+      height: 300vh;
+      margin: 0;
+      padding: 0;
+      background-color: #21D4FD;
+      background-image: -webkit-linear-gradient(rgb(70, 9, 9) 0%, #B721FF, rgb(70, 9, 9));
+      background-image: -moz-linear-gradient(rgb(70, 9, 9) 0%, #B721FF, rgb(70, 9, 9));
+      background-image: -o-linear-gradient(rgb(70, 9, 9) 0%, #B721FF, rgb(70, 9, 9));
+      background-image: linear-gradient(rgb(70, 9, 9) 0%, #B721FF, rgb(70, 9, 9));
+      animation: defaultAnimationBG 30s infinite alternate-reverse;
+      background-position: 0 0;
+    }
+
+    body .container {
+      pointer-events: none;
+    }
+
+    .logo-box {
+      white-space: nowrap;
+    }
+
+    .logo-M-box,
+    .logo-K-box {
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      height: 400px;
+      width: 400px;
+      transition: all ease 3s;
+    }
+
+    .logo-M-box {
+      margin-left: 0;
+      animation: slideLittleLeftM 2s ease forwards 3.5s;
+    }
+
+    .logo-K-box {
+      margin-left: -404px;
+      opacity: 0;
+      animation: slideRight 1s linear forwards 2.5s, slideLittleLeftK 2s ease forwards 3.5s;
+      transform-origin: 50% 50%;
+    }
+
+    #m0,
+    #m1,
+    #m2,
+    #k0,
+    #k1,
+    #k2 {
+      cursor: pointer;
+    }
+
+    .logo-M-box {
+      z-index: 2;
+    }
+
+    .logo-K-box {
+      z-index: 1;
+    }
+
+    @keyframes defaultAnimationBG {
+      100% {
+        background-position: 0 3000px;
+      }
+    }
+
+    @keyframes M_background {
+      100% {
+        background-color: #FAD961;
+        background-image: -webkit-linear-gradient(0deg, #FAD961 0%, #F76B1C 100%);
+        background-image: -moz-linear-gradient(0deg, #FAD961 0%, #F76B1C 100%);
+        background-image: -o-linear-gradient(0deg, #FAD961 0%, #F76B1C 100%);
+        background-image: linear-gradient(0deg, #FAD961 0%, #F76B1C 100%);
+      }
+    }
+
+    @keyframes slideRight {
+      100% {
+        margin-left: 0;
+        transform: rotateZ(90deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideLittleLeftK {
+      100% {
+        margin-left: -100px;
+      }
+    }
+    .test{
+      animation: test 5s ease;
+    }
+    @keyframes test {
+      0% {
+        opacity: 1;
+      }
+      99% {
+        opacity: 0;
+      }
+      100% {
+        display: none;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 </head>
 
-<body style="
-height: 100vh;
-background-color: #3d0d00;
-background-image: -webkit-linear-gradient(45deg, #3d0d00 0%, #651693 41%, #00b6cf 100%);
-background-image: -moz-linear-gradient(45deg, #3d0d00 0%, #651693 41%, #00b6cf 100%);
-background-image: -o-linear-gradient(45deg, #3d0d00 0%, #651693 41%, #00b6cf 100%);
-background-image: linear-gradient(45deg, #3d0d00 0%, #651693 41%, #00b6cf 100%);">
-  <div class="logo-box" style='width: 400px; height: 400px'>
-    <svg id="mysvg" class="" width="100%" height="100%" viewBox="0 0 2000 2000" preserveAspectRatio="xMaxYmax">
-
-    </svg>
+<body>
+  <div class="container">
+    <div class="logo-box">
+      <div class="logo-M-box">
+        <svg id="mysvg-m" width="100%" height="100%" viewBox="0 0 2000 2000">
+        </svg>
+      </div>
+      <div class="logo-K-box">
+        <svg id="mysvg-k" width="100%" height="100%" viewBox="0 0 2000 2000">
+        </svg>
+      </div>
+    </div>
   </div>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="./snap.svg-min.js"></script>
   <script>
-    var s = Snap('#mysvg');
-    var path = s.path("M0,0 L1000,0 L2000,0 L2000,2000 L1000,2000 L0, 2000 z").attr({
-      fill: "#000"
+    var m = Snap('#mysvg-m');
+    var k = Snap('#mysvg-k');
+    var m0 = m.path("M0,0 L1000,0 L2000,0 L2000,2000 L1000,2000 L0, 2000 z").attr({
+      id: 'm0',
+      fill: "#fff"
     });
-    var path1 = s.path("M0,2000 L0,100 L300,500 L300,2000 z").attr({
-      fill: "#000"
+    var m1 = m.path("M0,2000 L0,100 L300,500 L300,2000 z").attr({
+      id: 'm1',
+      fill: "#fff"
     });
-    var path2 = s.path("M2000,100 L2000,2000 L1700,2000 L1700,500 z").attr({
-      fill: "#000"
+    var m2 = m.path("M2000,100 L2000,2000 L1700,2000 L1700,500 z").attr({
+      id: 'm2',
+      fill: "#fff"
+    });
+    var k0 = k.path("M0,0 L1000,1000 L2000,0 L2000,450 L1000,1450 L0, 450 z").attr({
+      id: 'k0',
+      fill: "#fff"
+    });
+    var k1 = k.path("M0,2000 L0,100 L300,500 L300,2000 z").attr({
+      id: 'k1',
+      fill: "#fff"
+    });
+    var k2 = k.path("M2000,0 L2000,2000 L1700,2000 L1700,300 z").attr({
+      id: 'k2',
+      fill: "#fff"
     });
 
 
     setTimeout(first, 1000)
     setTimeout(second, 1800)
-    setTimeout(showK, 4800)
+    setTimeout(animateK, 3500)
 
     function first() {
-      path.animate({
+      m0.animate({
         d: "M0,0 L1000,1000 L2000,0 L2000,2000 L1000,2000 L0, 2000 z",
-        fill: "#000"
+        fill: "#fff"
       }, 1200, mina.elastic, function () {
         setTimeout(third(), 1200)
         setTimeout(rightToTop(), 100)
@@ -50,46 +184,139 @@ background-image: linear-gradient(45deg, #3d0d00 0%, #651693 41%, #00b6cf 100%);
     }
 
     function second() {
-      path.animate({
+      m0.animate({
         d: "M0,0 L1000,1000 L2000,0 L2000,450 L1000,2000 L0, 450 z",
-        fill: "#000"
+        fill: "#fff"
       }, 1200, mina.bounce, function () {
         fouth()
       });
     }
 
     function third() {
-      path.animate({
+      m0.animate({
         d: "M0,0 L1000,1000 L2000,0 L2000,450 L1000,1450 L0, 450 z",
-        fill: "#000"
-      }, 1200, mina.elastic, function () {
-        six()
-      });
-    }
-
-    function fouth() {
-      path1.animate({
-        d: "M0,2000 L0,900 L300,1200 L300,2000 z",
-        fill: "#000"
+        fill: "#fff"
       }, 1200, mina.elastic, function () {
         five()
       });
     }
+
+    function fouth() {
+      m1.animate({
+        d: "M0,2000 L0,900 L300,1200 L300,2000 z",
+        fill: "#fff"
+      }, 2000, mina.elastic);
+    }
+
     function rightToTop() {
-      path2.animate({
+      m2.animate({
         d: "M2000,0 L2000,2000 L1700,2000 L1700,300 z",
-        fill: "#000"
+        fill: "#fff"
       }, 10, mina.elastic);
     }
-    function six() {
-      path.animate({
-        d: "M0,0 L1000,1000 L1450,550 L1450,1000 L1000,1450 L0, 450 z",
+
+    function five() {
+      m0.animate({
+        d: "M0,0 L1000,1000 L1400,600 L1400,1050 L1000,1450 L0, 450 z",
+        fill: "#fff"
+      }, 2000, mina.elastic);
+    }
+
+    function animateK() {
+      k1.animate({
+        d: "M0,100 L0,100 L300,500 L300,500 z",
+        fill: "#fff"
+      }, 1000, mina.ease);
+      k2.animate({
+        d: "M2000,0 L2000,0 L1700,300 L1700,300 z",
+        fill: "#fff"
+      }, 1000, mina.ease);
+
+      setTimeout(function () {
+        window.document.querySelector('.container').style = "pointer-events: all;";
+      }, 2000)
+    }
+
+    function k_in() {
+      k0.animate({
         fill: "#000"
-      }, 1200, mina.elastic);
+      }, 1000, mina.ease);
+      k0.animate({
+        d: "M2000, 0 L1000, 1000 L0, 0 L0, 450 L1000, 1450 L2000, 450 z"
+      }, 500, mina.ease);
+      k1.animate({
+        fill: "#000"
+      }, 1000, mina.ease);
+      k2.animate({
+        fill: "#000"
+      }, 1000, mina.ease);
+      m2.animate({
+        fill: "#000"
+      }, 1000, mina.ease);
     }
-    function showK(){
-      
+
+    function k_out() {
+      k0.animate({
+        fill: "#fff"
+      }, 1000, mina.ease);
+      k1.animate({
+        fill: "#fff"
+      }, 1000, mina.ease);
+      k2.animate({
+        fill: "#fff"
+      }, 1000, mina.ease);
+      m2.animate({
+        fill: "#fff"
+      }, 1000, mina.ease);
     }
+
+    function m_in() {
+      k_out_revert();
+      m0.animate({
+        d: "M0,0 L1000,1000 L2000,0 L2000,450 L1000,1450 L0, 450 z",
+      }, 1000, mina.bounce);
+      m0.animate({
+        fill: "#6bbadb"
+      }, 1000, mina.ease);
+      m1.animate({
+        d: "M0,2000 L0,440 L300,740 L300,2000 z",
+      }, 1000, mina.bounce);
+      m1.animate({
+        fill: "#6bbadb"
+      }, 1000, mina.ease);
+      m2.animate({
+        fill: "#6bbadb"
+      }, 1000, mina.ease);
+    }
+
+    function m_out() {
+      m0.animate({
+        d: "M0,0 L1000,1000 L1400,600 L1400,1050 L1000,1450 L0, 450 z",
+      }, 1000, mina.bounce);
+      m0.animate({
+        fill: "#fff"
+      }, 1000, mina.ease);
+      m1.animate({
+        d: "M0,2000 L0,900 L300,1200 L300,2000 z",
+        fill: "#fff"
+      }, 1000, mina.bounce);
+      m2.animate({
+        fill: "#fff"
+      }, 1000, mina.ease);
+    }
+
+    function k_out_revert() {
+      k0.animate({
+        d: "M0,0 L1000,1000 L2000,0 L2000,450 L1000,1450 L0, 450 z"
+      }, 500, mina.ease);
+    }
+
+    var K = document.querySelector('#mysvg-k');
+    K.onmouseleave = k_out_revert;
+    k0.hover(k_in, k_out, this);
+    m0.hover(m_in, m_out, this);
+    m1.hover(m_in, m_out, this);
+    m2.hover(k_in, k_out, this);
   </script>
 </body>
 
